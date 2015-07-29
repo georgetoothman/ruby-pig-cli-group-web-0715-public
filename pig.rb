@@ -1,63 +1,22 @@
-puts "Let's start the game!!!"
 
-def roll_dice
-  1 + rand(6)
+def roll
+  rand(1..6)
 end
 
-score = 0
+puts "welcome to pig"
+outcome = roll
+abort("You rolled a 1, sorry") if outcome == 1
 
-answer = "Y"
+score = outcome
 
-while answer == "Y"
-  roll = roll_dice
-  if roll == 1 
-    puts "You rolled a 1. You lose everything!"
-    exit
-  else
-    puts "You rolled a #{roll}"
-    score = score + roll
-    puts "Your score is #{score}"
-    puts "Would you like to roll again? (Y/N)"
-    answer = gets.chomp.upcase
-  end
+loop do 
+  puts "your score is #{score}"
+  puts "would you like to roll again? (y/n)"
+  response = gets.chomp.downcase
+  break if response != 'y'
+  outcome = roll
+  abort("You rolled a 1, sorry") if outcome == 1
+  score = outcome
 end
 
-
-# def roll_dice
-#   score = []
-
-#   roll = 1 + rand(6)
-#   if roll == 1
-#     
-#   else
-#     puts "You rolled a #{roll}"
-#     score.push(roll)
-#     
-#     
-
-#   loop do 
-#     roll = 1 + rand(6)
-#     if answer == "Y"
- 
-        
-#         puts "This time you rolled a #{roll}"
-#         puts "Would you like to roll again? (Y/N)"
-
-#     if answer == "N"
-#       puts "your final score is #{score}"
-
-#     end
-#   end
-# end
-
-
-
-# loop do 
-#   roll_dice
-# end
-
-      # puts "This time you rolled a #{roll}"
-      # puts "Would you like to roll again? (Y/N)"
-      # if answer == "Y"
-      #   score.push(roll)
-      # end
+puts "You made it! Your score is #{score}"
